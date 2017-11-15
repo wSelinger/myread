@@ -17,7 +17,7 @@ const Book = ({book, onShelfUpdate}) => {
       <div className="book-top">
         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url("${imageLinks.thumbnail}")` }}></div>
         <div className="book-shelf-changer">
-          <select value={shelf} onChange={event => {console.log(event); onShelfUpdate(book, event.target.value)}}>
+          <select value={shelf} onChange={event => {onShelfUpdate(book, event.target.value)}}>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>
             <option value="read">Read</option>

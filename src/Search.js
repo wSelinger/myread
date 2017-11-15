@@ -8,14 +8,7 @@ class Search extends React.Component {
     result: []
   }
 
-  constructor() {
-    super()
-    console.log("Constructed: ", this)
-  }
-
-
   search(searchCriteria) {
-    console.log("searching: ", searchCriteria)
     if (searchCriteria.trim().length === 0) {
       this.setState({result: []})
       return
@@ -29,13 +22,10 @@ class Search extends React.Component {
 
   /* for getting books with their current shelf correctly set, replace search result items with their corresponding shelved books */
   mergedResult(books, shelvedBooks) {
-    const merged = books.map(book => shelvedBooks.find(s => s.id === book.id) || book)
-    console.log("Merging search result with shelves: ", books, shelvedBooks, merged)
-    return merged
+    return books.map(book => shelvedBooks.find(s => s.id === book.id) || book)
   }
 
   render() {
-    console.log("rendering ", this.state.result)
     return (
       <div className="search-books">
         <div className="search-books-bar">

@@ -3,14 +3,9 @@ import {Link} from 'react-router-dom'
 import BooksGrid from './BooksGrid.js'
 
 class Main extends React.Component {
-  constructor() {
-    super()
-    console.log("Constructed ", this)
-  }
-
   render() {
     const {books, onShelfUpdate} = this.props
-    console.log("Render Main, books:", books)
+
     return (
       <div className="list-books">
         <div className="list-books-title">
