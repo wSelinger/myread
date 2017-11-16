@@ -3,6 +3,15 @@ import {Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BooksGrid from './BooksGrid.js'
 
+/*
+Search page of the app.
+Maintains its own state representing the search criteria and search result retrieved via books API.
+
+Note: The search API does not return book shelves. Since book shelves of books in search result must be shown with current values,
+books in the search result are replaced by their corresponding shelved book instances passed in from parent component.
+Also, changes in shelves are not handled by Search itself, but forwarded to the parent via handler function passed in props.
+*/
+
 class Search extends React.Component {
   state = {
     result: []

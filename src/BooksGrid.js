@@ -1,5 +1,9 @@
 import React from 'react'
 
+/*
+Stateless UI components representing a grid of books and a single book.
+Changes in book shelve are passed to the parent via handler function.
+*/
 const BooksGrid = ({books, onShelfUpdate}) => (
   <ol className="books-grid">
   {books.map((book) => (

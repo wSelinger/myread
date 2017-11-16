@@ -5,6 +5,14 @@ import Main from './Main.js'
 import Search from './Search.js'
 import './App.css'
 
+/*
+Application component containing the root app state and the app's UI.
+App state consists of list of shelved books stored with key "books".
+If a book is unshelved (by setting book.shelf to "None" via function updateShelf),
+the book is removed from the list.
+
+UI consists of 2 pages (Main, Search) managed by Routes.
+*/
 class BooksApp extends React.Component {
   state = {
     books: []
