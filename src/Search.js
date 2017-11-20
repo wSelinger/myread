@@ -1,7 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BooksGrid from './BooksGrid.js'
+import { Debounce } from 'react-throttle'
 
 /*
 Search page of the app.
@@ -13,8 +14,11 @@ Also, changes in shelves are not handled by Search itself, but forwarded to the 
 */
 
 class Search extends React.Component {
-  state = {
-    result: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: []
+    }
   }
 
   search(searchCriteria) {
@@ -48,12 +52,23 @@ class Search extends React.Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <input type="text" onChange={event => this.search(event.target.value)} placeholder="Search by title or author"/>
-
+            {
+            // See https://www.npmjs.com/package/react-throttle (-> yarn add react-throttle --save-prod)
+            }
+            <Debounce time="400" handler="onChange">
+              <input
+                type="text"
+                onChange={event => this.search(event.target.value)}
+                placeholder="Search by title or author"
+              />
+          </Debounce>
           </div>
         </div>
         <div className="search-books-results">
-          <BooksGrid books={this.mergedResult(this.state.result, this.props.books)} onShelfUpdate={this.props.onShelfUpdate}/>
+          <BooksGrid
+            books={this.mergedResult(this.state.result, this.props.books)}
+            onShelfUpdate={this.props.onShelfUpdate}
+          />
         </div>
       </div>
     )

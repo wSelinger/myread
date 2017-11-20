@@ -14,8 +14,12 @@ the book is removed from the list.
 UI consists of 2 pages (Main, Search) managed by Routes.
 */
 class BooksApp extends React.Component {
-  state = {
-    books: []
+  // See https://reactjs.org/docs/react-component.html#constructor
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: []
+    }
   }
 
   componentDidMount() {
@@ -46,12 +50,25 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route exact path="/" render={() => (
-          <Main books={this.state.books} onShelfUpdate={(book, shelf) => this.updateShelf(book, shelf)}/>
-        )} />
-        <Route path="/search" render={() => (
-          <Search books={this.state.books} onShelfUpdate={(book, shelf) => this.updateShelf(book, shelf)}/>
-        )} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Main
+              books={this.state.books}
+              onShelfUpdate={(book, shelf) => this.updateShelf(book, shelf)}
+            />
+          )}
+        />
+        <Route
+          path="/search"
+          render={() => (
+            <Search
+              books={this.state.books}
+              onShelfUpdate={(book, shelf) => this.updateShelf(book, shelf)}
+            />
+          )}
+        />
       </div>
     )
   }

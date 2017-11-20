@@ -8,7 +8,7 @@ const BooksGrid = ({books, onShelfUpdate}) => (
   <ol className="books-grid">
   {books.map((book) => (
     <li key={book.id}>
-      <Book book={book} onShelfUpdate={onShelfUpdate}/>
+      <Book book={book} onShelfUpdate={onShelfUpdate} />
     </li>
   ))}
   </ol>
@@ -19,7 +19,9 @@ const Book = ({book, onShelfUpdate}) => {
   return (
     <div className="book">
       <div className="book-top">
-        <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url("${imageLinks.thumbnail}")` }}></div>
+        <div
+          className="book-cover"
+          style={{ width: 128, height: 192, backgroundImage: `url("${imageLinks.thumbnail}")` }} />
         <div className="book-shelf-changer">
           <select value={shelf} onChange={event => {onShelfUpdate(book, event.target.value)}}>
             <option value="currentlyReading">Currently Reading</option>
